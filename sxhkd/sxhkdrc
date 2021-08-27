@@ -1,0 +1,40 @@
+# My keybinding
+
+# exit
+ctrl + alt + q
+	openbox --exit
+
+# locked
+super + shift + l
+	~/.config/scripts/lock.sh
+
+# Firefox
+super + n
+	firefox
+
+# terminal emulator
+super + Return
+	kitty
+
+# program launcher
+super + @space
+	dmenu_run
+
+# make sxhkd reload its configuration files:
+super + Escape
+	pkill -USR1 -x sxhkd
+
+
+# Set workspace
+super + {1,2,3,4}
+	xdotool set_desktop {0,1,2,3}
+super + shift + {1,2,3,4}
+	xdotool getactivewindow set_desktop_for_window {0,1,2,3}
+
+# sound
+XF86AudioRaiseVolume
+	pactl set-sink-volume alsa_output.pci-0000_00_1f.3.hdmi-stereo +5%
+XF86AudioLowerVolume
+	pactl set-sink-volume alsa_output.pci-0000_00_1f.3.hdmi-stereo -5%
+XF86AudioMute
+	pactl set-sink-mute alsa_output.pci-0000_00_1f.3.hdmi-stereo toggle
