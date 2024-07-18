@@ -1,0 +1,22 @@
+#! /bin/sh
+
+pgrep -x sxhkd > /dev/null || sxhkd &
+
+DP_LAPTOP="eDP-1"
+DP_CENTER="DP-1-2"
+DP_RIGHT="DP-1-1"
+
+xrandr \
+    --ouput $DP_LAPTOP --off \
+    --output $DP_CENTER --primary --mode 2560x1440 --rate 59.95 \
+    --output $DP_RIGHT --mode 2560x1440 --rate 59.95 --right-of $DP_CENTER
+
+bspc monitor "$DP_LEFT" -d 1 2 3 4 5
+bppc monitor "$DP_RIGHT" -d 6 7 8 9 10
+
+bspc config border_width        2
+bspc config window_gap          12
+
+bspc config split_ratio          0.52
+bspc config borderless_monocle   true
+bspc config gapless_monocle      true
